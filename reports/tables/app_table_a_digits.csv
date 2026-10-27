@@ -1,0 +1,5 @@
+Model,Accuracy,Macro F1,OvR ROC-AUC
+KNN (K=5),0.9667,0.9661,0.995
+Decision Tree (Depth=10),0.8111,0.8114,0.901
+"SVM (RBF, C=10)",0.9806,0.9805,0.9995
+2D-CNN (PyTorch),0.9833,0.9832,0.9998

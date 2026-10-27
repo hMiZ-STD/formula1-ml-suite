@@ -1,0 +1,16 @@
+Audit Item,Observed Value
+Supervised Scope,1994-2024 (Seasons 1994 to 2024)
+positionOrder Missing Values,0 (100% complete)
+position Missing Values,10953 (incomplete; DNF/DSQ missing)
+Post-1993 Podium Corruption,0 races with != 3 podiums (0% error)
+Pre-1994 Podium Corruption,18 shared-drive races with 4-7 podiums
+Shared-Drive Duplicate Keys (Post-1993),0 duplicates (clean 1-to-1)
+Shared-Drive Duplicate Keys (All-Time),176 duplicate rows
+Indy 500 Races (1994-2024),0 races (all 11 in 1950-1960)
+Sprint Race IDs Identified,18 races (2021-2024)
+DSQ Drivers Position Range,"min=10, median=20.0, max=22"
+Grid == 0 Starters Remaining,91 rows (encoded as grid_zero_flag=1)
+train_core (1994-2016),"408 races, 8920 rows (72.53%)"
+val (2017-2018),"41 races, 820 rows (6.67%)"
+train_val_pool (1994-2018),"449 races, 9740 rows (79.19%)"
+test (2019-2024),"128 races, 2559 rows (20.81%)"

@@ -1,0 +1,29 @@
+freeze_timestamp: '2026-10-28T01:02:32.289138'
+supervised_scope: 1994-2024
+train_val_pool_boundary: last race of 2018
+test_boundary: first race of 2019
+feature_set_hash: e17553c6216cad6e820563d682637b1d86b5d0b3c7ef950d76f1f0aa5778324e
+hyperparameters:
+  knn:
+    n_neighbors: 30
+  dt:
+    max_depth: 4
+    ccp_alpha: 0.0
+  svm:
+    C: 100.0
+    gamma: '0.001'
+  ridge:
+    alpha: 100.0
+  lasso:
+    alpha: 0.011721022975334805
+thresholds:
+  grid_heuristic: -3.1214572864321326
+  knn: 0.2857788944723618
+  dt: 0.7142211055276382
+  svm: 0.8629132039388512
+  cnn: 0.8028643216080402
+random_seeds:
+  numpy: 42
+  torch: 42
+  sklearn_random_state: 42
+cnn_stopped_epoch: 3

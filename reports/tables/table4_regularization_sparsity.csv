@@ -1,0 +1,59 @@
+Feature,OLS Coeff,Ridge Coeff,Lasso Coeff,Lasso Zeroed?
+grid_effective,1.6971,1.6063,1.6524,NO
+driver_norm_finish_p5,0.7695,0.7925,0.7668,NO
+driver_dnf_rate_p5,-0.1219,-0.1186,-0.1018,NO
+q_gap_pct,0.2346,0.2388,0.1922,NO
+teammate_form_delta,-0.1017,-0.1123,-0.0884,NO
+constructor_pts_share,-1.4683,-1.4021,-1.4206,NO
+driver_age_years,0.0505,0.0492,0.0411,NO
+quali_position_norm,0.2049,0.2883,0.2656,NO
+rounds_completed,0.0462,0.0418,0.0315,NO
+grid_effective^2,-0.2107,-0.1555,-0.0927,NO
+grid_effective driver_norm_finish_p5,0.3787,0.2269,0.113,NO
+grid_effective driver_dnf_rate_p5,-0.0463,0.006,-0.0171,NO
+grid_effective q_gap_pct,0.2694,0.2196,0.1053,NO
+grid_effective teammate_form_delta,-0.1562,-0.1097,-0.0,YES
+grid_effective constructor_pts_share,0.1889,0.1131,-0.0,YES
+grid_effective driver_age_years,0.313,0.2834,0.2217,NO
+grid_effective quali_position_norm,0.3012,0.2263,0.0,YES
+grid_effective rounds_completed,0.0743,0.0806,0.0,YES
+driver_norm_finish_p5^2,0.0758,0.0647,0.0301,NO
+driver_norm_finish_p5 driver_dnf_rate_p5,-0.2643,-0.2273,-0.1184,NO
+driver_norm_finish_p5 q_gap_pct,0.3017,0.271,0.1912,NO
+driver_norm_finish_p5 teammate_form_delta,0.0476,0.0328,-0.0,YES
+driver_norm_finish_p5 constructor_pts_share,-0.1172,-0.0964,-0.1032,NO
+driver_norm_finish_p5 driver_age_years,0.0102,0.0139,0.0,YES
+driver_norm_finish_p5 quali_position_norm,-0.1085,0.0554,0.1682,NO
+driver_norm_finish_p5 rounds_completed,-0.0586,-0.05,-0.0,YES
+driver_dnf_rate_p5^2,0.0791,0.0735,0.0388,NO
+driver_dnf_rate_p5 q_gap_pct,-0.0868,-0.0751,-0.0435,NO
+driver_dnf_rate_p5 teammate_form_delta,-0.1484,-0.1532,-0.1557,NO
+driver_dnf_rate_p5 constructor_pts_share,-0.3131,-0.2905,-0.195,NO
+driver_dnf_rate_p5 driver_age_years,-0.0571,-0.0541,-0.0172,NO
+driver_dnf_rate_p5 quali_position_norm,-0.1379,-0.1911,-0.1621,NO
+driver_dnf_rate_p5 rounds_completed,-0.068,-0.0687,-0.0564,NO
+q_gap_pct^2,-0.0251,-0.0274,-0.0334,NO
+q_gap_pct teammate_form_delta,-0.1681,-0.1544,-0.101,NO
+q_gap_pct constructor_pts_share,0.0975,0.0741,0.0,YES
+q_gap_pct driver_age_years,0.202,0.1987,0.1736,NO
+q_gap_pct quali_position_norm,-0.2206,-0.1628,-0.0,YES
+q_gap_pct rounds_completed,0.022,0.0226,0.0,YES
+teammate_form_delta^2,0.0152,0.0141,0.0128,NO
+teammate_form_delta constructor_pts_share,0.0883,0.0688,0.0309,NO
+teammate_form_delta driver_age_years,0.0278,0.023,0.0007,NO
+teammate_form_delta quali_position_norm,0.172,0.1189,0.0,YES
+teammate_form_delta rounds_completed,0.0451,0.0411,0.0032,NO
+constructor_pts_share^2,-0.0121,-0.0185,0.0,YES
+constructor_pts_share driver_age_years,0.0064,0.0079,0.0,YES
+constructor_pts_share quali_position_norm,-0.226,-0.1397,-0.0,YES
+constructor_pts_share rounds_completed,-0.2284,-0.2174,-0.1737,NO
+driver_age_years^2,0.0813,0.0856,0.0881,NO
+driver_age_years quali_position_norm,-0.3542,-0.321,-0.244,NO
+driver_age_years rounds_completed,0.0224,0.0211,0.0171,NO
+quali_position_norm^2,-0.4514,-0.4294,-0.2676,NO
+quali_position_norm rounds_completed,-0.1844,-0.1872,-0.0971,NO
+rounds_completed^2,-0.079,-0.0769,-0.0695,NO
+grid_zero_flag,0.3537,0.3464,0.3161,NO
+q1_data_available,0.1616,0.1619,0.1644,NO
+is_rookie_window,0.2366,0.2348,0.1991,NO
+new_constructor_flag,0.0127,0.0146,0.0,YES

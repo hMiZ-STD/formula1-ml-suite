@@ -1,0 +1,18 @@
+feature_name,type,is_allowed,formula
+grid_effective,continuous,True,grid if grid>0 else field_max+1
+grid_norm,continuous,True,grid_effective / max(grid_effective in race)
+grid_zero_flag,binary,True,(grid == 0).astype(int)
+q_gap_pct,continuous,True,(q1 - min(q1)) / min(q1) * 100 (outliers >150% median -> NaN)
+q1_data_available,binary,True,1 if Q1 valid and not outlier else 0
+quali_position_norm,continuous,True,qualifying.position / num_qualifiers
+grid_vs_quali_delta,continuous,True,grid_effective - qualifying.position (NaN for sprint races)
+driver_norm_finish_p5,continuous,True,"driver shift(1) rolling(5, min_periods=3) norm_finish mean"
+driver_dnf_rate_p5,continuous,True,"driver shift(1) rolling(5, min_periods=3) DNF mean"
+driver_podium_rate_career,continuous,True,driver shift(1) expanding podium mean
+is_rookie_window,binary,True,1 if prior starts < 3 else 0
+teammate_form_delta,continuous,True,driver_norm_finish_p5 - mean(teammates_norm_finish_p5)
+constructor_pts_share,continuous,True,"race-level constructor cumsum pts / cumsum max pts, shifted 1 race"
+constructor_season_rank,continuous,True,rank of constructor pts_cumsum_before_race
+rounds_completed,continuous,True,round - 1
+driver_age_years,continuous,True,(race_date - dob) in years
+new_constructor_flag,binary,True,1 if constructor has no prior season history else 0

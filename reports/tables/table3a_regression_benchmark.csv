@@ -1,0 +1,7 @@
+Model,Key Parameters,Train MSE,Test MSE,Test RMSE,Test R² (All Starters),Test R² (Classified-Only)
+Predict-mean Baseline,Mean = 11.42,40.6786,34.0727,5.8372,-0.0254,-0.1964
+Grid-only OLS,positionOrder ~ grid_effective,29.2422,20.8663,4.568,0.372,0.4323
+OLS (lstsq),All pre-race features (min-norm),26.9528,19.6694,4.435,0.408,0.4884
+GD Linear Reg,"alpha_safe=0.2698, 1k iter",26.9534,19.6916,4.4375,0.4074,0.4866
+Ridge (L2),"alpha=100.0000, degree=2",26.9489,20.1199,4.4855,0.3945,0.4693
+Lasso (L1),"alpha=0.0117, degree=2",26.9779,19.83,4.4531,0.4032,0.4821

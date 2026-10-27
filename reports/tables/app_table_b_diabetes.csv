@@ -1,0 +1,4 @@
+Model,Optimal Parameters,Test MSE,Test RMSE,Test R²
+OLS (Ordinary Least Squares),rcond=None,2900.1936,53.8534,0.4526
+Ridge Regression (L2),alpha=0.0031,2890.1912,53.7605,0.4545
+Lasso Regression (L1),alpha=0.0687,2802.7043,52.9406,0.471
