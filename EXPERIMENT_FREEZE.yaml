@@ -27,3 +27,317 @@ random_seeds:
   torch: 42
   sklearn_random_state: 42
 cnn_stopped_epoch: 3
+
+# =============================================================================
+# v6 Ranking and Hurdle Architecture Freeze
+# =============================================================================
+v6_ranking_and_hurdle:
+  lambdamart:
+    winning_relevance_mapping: linear_rank
+    objective: lambdarank
+    metric: ndcg
+    eval_at:
+    - 1
+    - 3
+    - 10
+    n_estimators: 100
+    learning_rate: 0.05
+    num_leaves: 31
+    min_child_samples: 15
+    random_state: 42
+    early_stopping_rounds: 15
+    best_iteration: 1
+    val_ndcg_at_1: 0.8475617606472896
+    val_ndcg_at_3: 0.7999423472723916
+    val_ndcg_at_10: 0.8957973643113584
+    val_mrr: 0.8176829268292682
+    val_kendall_tau: 0.5179008413100161
+    val_podium_f1: 0.6829268292682927
+    test_ndcg_at_1: 0.806282
+    test_ndcg_at_3: 0.773121
+    test_ndcg_at_10: 0.861783
+    test_mrr: 0.787498
+    test_kendall_tau: 0.517176
+    test_podium_f1: 0.677083
+    test_rmse: 4.2449
+    test_r2_all: 0.4577
+    test_r2_classified: 0.6309
+  relevance_mapping_benchmark:
+    linear_rank:
+      val_ndcg_at_1: 0.8475617606472896
+      val_ndcg_at_3: 0.7999423472723916
+      val_ndcg_at_10: 0.8957973643113584
+      val_mrr: 0.8176829268292682
+      val_kendall_tau: 0.5179008413100161
+      val_podium_f1: 0.6829268292682927
+    f1_points:
+      val_ndcg_at_1: 0.7574552152619594
+      val_ndcg_at_3: 0.7836622190443493
+      val_ndcg_at_10: 0.8558908780825526
+      val_mrr: 0.8192904656319291
+      val_kendall_tau: 0.41688873116603153
+      val_podium_f1: 0.6341463414634145
+    podium_tier:
+      val_ndcg_at_1: 0.7491289198606272
+      val_ndcg_at_3: 0.7843212618321723
+      val_ndcg_at_10: 0.8700983694077605
+      val_mrr: 0.7749999999999999
+      val_kendall_tau: 0.5146635094485972
+      val_podium_f1: 0.7073170731707318
+  plackett_luce:
+    input_dim: 17
+    hidden_dim: 64
+    lr: 0.001
+    weight_decay: 0.0001
+    epochs: 50
+    batch_size_races: 16
+    random_state: 42
+    test_ndcg_at_1: 0.6955
+    test_ndcg_at_3: 0.76
+    test_ndcg_at_10: 0.8446
+    test_mrr: 0.7453
+    test_kendall_tau: 0.5379
+    test_podium_f1: 0.6823
+    test_rmse: 4.7487
+    test_r2_all: 0.3213
+    test_r2_classified: 0.4928
+  hurdle_model:
+    stage1_estimator: HistGradientBoostingClassifier(loss='log_loss', max_depth=4,
+      l2_reg=1.0)
+    stage1_calibration: Platt scaling (sigmoid calibration on val.parquet)
+    stage2_regressor: HistGradientBoostingRegressor(max_depth=4, l2_reg=1.0)
+    stage2_classifier: HistGradientBoostingClassifier(loss='log_loss', max_depth=4,
+      l2_reg=1.0)
+    mean_dnf_position: 18.0358
+    residual_std: 2.5028
+    random_state: 42
+    test_classified_pace_r2: 0.6587
+    test_expected_pos_rmse: 4.342
+    test_expected_pos_r2: 0.4326
+    test_podium_f1: 0.6693
+  table8_benchmark:
+  - Model: Constructor Rank
+    Architecture: Heuristic Baseline
+    Decision_Rule: Post-hoc Top-3 Selection
+    NDCG@1: 0.7484
+    NDCG@3: 0.728
+    NDCG@10: 0.8241
+    MRR: 0.7461
+    Kendall_Tau: 0.4667
+    Podium_Precision: 0.6432
+    Podium_Recall: 0.6432
+    Podium_F1: 0.6432
+    Test_RMSE: 4.9679
+    Test_R2_All: 0.2572
+    Test_R2_Classified: 0.3895
+    Key_Parameters: score = -constructor_season_rank
+  - Model: Grid Heuristic
+    Architecture: Heuristic Baseline
+    Decision_Rule: Post-hoc Top-3 Selection
+    NDCG@1: 0.6271
+    NDCG@3: 0.7315
+    NDCG@10: 0.8156
+    MRR: 0.6807
+    Kendall_Tau: 0.4998
+    Podium_Precision: 0.6823
+    Podium_Recall: 0.6823
+    Podium_F1: 0.6823
+    Test_RMSE: 4.9946
+    Test_R2_All: 0.2492
+    Test_R2_Classified: 0.3739
+    Key_Parameters: score = -grid_effective
+  - Model: KNN
+    Architecture: Pointwise Classification (v5.0)
+    Decision_Rule: Static Threshold (tau=0.286)
+    NDCG@1: 0.6149
+    NDCG@3: 0.7263
+    NDCG@10: 0.8205
+    MRR: 0.6809
+    Kendall_Tau: 0.4918
+    Podium_Precision: 0.6052
+    Podium_Recall: 0.7865
+    Podium_F1: 0.684
+    Test_RMSE: N/A
+    Test_R2_All: N/A
+    Test_R2_Classified: N/A
+    Key_Parameters: K=30, weights=distance
+  - Model: KNN
+    Architecture: Pointwise Classification (v5.0)
+    Decision_Rule: Post-hoc Top-3 Selection
+    NDCG@1: 0.6149
+    NDCG@3: 0.7263
+    NDCG@10: 0.8205
+    MRR: 0.6809
+    Kendall_Tau: 0.4918
+    Podium_Precision: 0.6641
+    Podium_Recall: 0.6641
+    Podium_F1: 0.6641
+    Test_RMSE: 4.1868
+    Test_R2_All: 0.4724
+    Test_R2_Classified: 0.6391
+    Key_Parameters: K=30, weights=distance
+  - Model: Decision Tree
+    Architecture: Pointwise Classification (v5.0)
+    Decision_Rule: Static Threshold (tau=0.714)
+    NDCG@1: 0.8608
+    NDCG@3: 0.8086
+    NDCG@10: 0.8958
+    MRR: 0.8536
+    Kendall_Tau: 0.5207
+    Podium_Precision: 0.7123
+    Podium_Recall: 0.651
+    Podium_F1: 0.6803
+    Test_RMSE: N/A
+    Test_R2_All: N/A
+    Test_R2_Classified: N/A
+    Key_Parameters: max_depth=4, ccp_alpha=0.0
+  - Model: Decision Tree
+    Architecture: Pointwise Classification (v5.0)
+    Decision_Rule: Post-hoc Top-3 Selection
+    NDCG@1: 0.8608
+    NDCG@3: 0.8086
+    NDCG@10: 0.8958
+    MRR: 0.8536
+    Kendall_Tau: 0.5207
+    Podium_Precision: 0.6849
+    Podium_Recall: 0.6849
+    Podium_F1: 0.6849
+    Test_RMSE: 4.212
+    Test_R2_All: 0.4661
+    Test_R2_Classified: 0.6432
+    Key_Parameters: max_depth=4, ccp_alpha=0.0
+  - Model: SVM (RBF)
+    Architecture: Pointwise Classification (v5.0)
+    Decision_Rule: Static Threshold (tau=0.863)
+    NDCG@1: 0.5672
+    NDCG@3: 0.6973
+    NDCG@10: 0.8035
+    MRR: 0.6309
+    Kendall_Tau: 0.5327
+    Podium_Precision: 0.6527
+    Podium_Recall: 0.6901
+    Podium_F1: 0.6709
+    Test_RMSE: N/A
+    Test_R2_All: N/A
+    Test_R2_Classified: N/A
+    Key_Parameters: C=100.0, gamma=0.001
+  - Model: SVM (RBF)
+    Architecture: Pointwise Classification (v5.0)
+    Decision_Rule: Post-hoc Top-3 Selection
+    NDCG@1: 0.5672
+    NDCG@3: 0.6973
+    NDCG@10: 0.8035
+    MRR: 0.6309
+    Kendall_Tau: 0.5327
+    Podium_Precision: 0.6562
+    Podium_Recall: 0.6562
+    Podium_F1: 0.6562
+    Test_RMSE: 4.7508
+    Test_R2_All: 0.3208
+    Test_R2_Classified: 0.4975
+    Key_Parameters: C=100.0, gamma=0.001
+  - Model: Dual-Branch 1D-CNN
+    Architecture: Pointwise Classification (v5.0)
+    Decision_Rule: Static Threshold (tau=0.803)
+    NDCG@1: 0.6706
+    NDCG@3: 0.7347
+    NDCG@10: 0.8374
+    MRR: 0.7272
+    Kendall_Tau: 0.5333
+    Podium_Precision: 0.6478
+    Podium_Recall: 0.7135
+    Podium_F1: 0.6791
+    Test_RMSE: N/A
+    Test_R2_All: N/A
+    Test_R2_Classified: N/A
+    Key_Parameters: epoch=3, seq+static fusion
+  - Model: Dual-Branch 1D-CNN
+    Architecture: Pointwise Classification (v5.0)
+    Decision_Rule: Post-hoc Top-3 Selection
+    NDCG@1: 0.6706
+    NDCG@3: 0.7347
+    NDCG@10: 0.8374
+    MRR: 0.7272
+    Kendall_Tau: 0.5333
+    Podium_Precision: 0.6615
+    Podium_Recall: 0.6615
+    Podium_F1: 0.6615
+    Test_RMSE: 4.762
+    Test_R2_All: 0.3175
+    Test_R2_Classified: 0.4921
+    Key_Parameters: epoch=3, seq+static fusion
+  - Model: LambdaMART (linear_rank)
+    Architecture: Listwise Learning-to-Rank (v6.0)
+    Decision_Rule: Top-3 Guaranteed Selection
+    NDCG@1: 0.8063
+    NDCG@3: 0.7731
+    NDCG@10: 0.8618
+    MRR: 0.7875
+    Kendall_Tau: 0.5172
+    Podium_Precision: 0.6771
+    Podium_Recall: 0.6771
+    Podium_F1: 0.6771
+    Test_RMSE: 4.2449
+    Test_R2_All: 0.4577
+    Test_R2_Classified: 0.6309
+    Key_Parameters: target=linear_rank, best_iter=1, lr=0.05
+  - Model: LambdaMART (f1_points)
+    Architecture: Listwise Learning-to-Rank (v6.0)
+    Decision_Rule: Top-3 Guaranteed Selection
+    NDCG@1: 0.8353
+    NDCG@3: 0.7666
+    NDCG@10: 0.8449
+    MRR: 0.7901
+    Kendall_Tau: 0.382
+    Podium_Precision: 0.6432
+    Podium_Recall: 0.6432
+    Podium_F1: 0.6432
+    Test_RMSE: 4.8408
+    Test_R2_All: 0.2948
+    Test_R2_Classified: 0.3652
+    Key_Parameters: target=f1_points, best_iter=1, lr=0.05
+  - Model: Plackett-Luce Neural Ranker
+    Architecture: Listwise Learning-to-Rank (v6.0)
+    Decision_Rule: Top-3 Guaranteed Selection
+    NDCG@1: 0.6955
+    NDCG@3: 0.76
+    NDCG@10: 0.8446
+    MRR: 0.7453
+    Kendall_Tau: 0.5379
+    Podium_Precision: 0.6823
+    Podium_Recall: 0.6823
+    Podium_F1: 0.6823
+    Test_RMSE: 4.7487
+    Test_R2_All: 0.3213
+    Test_R2_Classified: 0.4928
+    Key_Parameters: ListMLE loss, MLP(17->64->32->1), epochs=50, lr=1e-3
+  - Model: Two-Stage Hurdle
+    Architecture: Two-Stage Hurdle (v6.0)
+    Decision_Rule: Top-3 Guaranteed Selection
+    NDCG@1: 0.6486
+    NDCG@3: 0.7417
+    NDCG@10: 0.8305
+    MRR: 0.7203
+    Kendall_Tau: 0.5106
+    Podium_Precision: 0.6693
+    Podium_Recall: 0.6693
+    Podium_F1: 0.6693
+    Test_RMSE: 4.342
+    Test_R2_All: 0.4326
+    Test_R2_Classified: 0.6587
+    Key_Parameters: 'Stage1: HistGBM (calibrated), Stage2: HistGBM Pace (R^2=0.6587)'
+  - Model: Two-Stage Hurdle (Expected Pos)
+    Architecture: Two-Stage Hurdle (v6.0)
+    Decision_Rule: Top-3 Guaranteed (Expected Pos)
+    NDCG@1: 0.6116
+    NDCG@3: 0.7256
+    NDCG@10: 0.8229
+    MRR: 0.6844
+    Kendall_Tau: 0.5306
+    Podium_Precision: 0.6745
+    Podium_Recall: 0.6745
+    Podium_F1: 0.6745
+    Test_RMSE: 4.342
+    Test_R2_All: 0.4326
+    Test_R2_Classified: 0.6587
+    Key_Parameters: E[Pos] = (1-p)*y_finish + p*18.04, Stage 2 R^2=0.6587
