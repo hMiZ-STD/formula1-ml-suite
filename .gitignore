@@ -25,3 +25,10 @@ Thumbs.db
 
 # Teamwork agent artifacts
 .agents/
+
+# Internal orchestration and scaffolding markdown (not user-facing docs)
+CODING_STANDARDS.md
+FINAL_IMPLEMENTATION_PLAN.md
+MEMORY.md
+PROJECT.md
+TEST_INFRA.md
