@@ -1,0 +1,16 @@
+Model,Architecture,Decision_Rule,NDCG@1,NDCG@3,NDCG@10,MRR,Kendall_Tau,Podium_Precision,Podium_Recall,Podium_F1,Test_RMSE,Test_R2_All,Test_R2_Classified,Key_Parameters
+Constructor Rank,Heuristic Baseline,Post-hoc Top-3 Selection,0.7484,0.728,0.8241,0.7461,0.4667,0.6432,0.6432,0.6432,4.9679,0.2572,0.3895,score = -constructor_season_rank
+Grid Heuristic,Heuristic Baseline,Post-hoc Top-3 Selection,0.6271,0.7315,0.8156,0.6807,0.4998,0.6823,0.6823,0.6823,4.9946,0.2492,0.3739,score = -grid_effective
+KNN,Pointwise Classification (v5.0),Static Threshold (tau=0.286),0.6149,0.7263,0.8205,0.6809,0.4918,0.6052,0.7865,0.684,N/A,N/A,N/A,"K=30, weights=distance"
+KNN,Pointwise Classification (v5.0),Post-hoc Top-3 Selection,0.6149,0.7263,0.8205,0.6809,0.4918,0.6641,0.6641,0.6641,4.1868,0.4724,0.6391,"K=30, weights=distance"
+Decision Tree,Pointwise Classification (v5.0),Static Threshold (tau=0.714),0.8608,0.8086,0.8958,0.8536,0.5207,0.7123,0.651,0.6803,N/A,N/A,N/A,"max_depth=4, ccp_alpha=0.0"
+Decision Tree,Pointwise Classification (v5.0),Post-hoc Top-3 Selection,0.8608,0.8086,0.8958,0.8536,0.5207,0.6849,0.6849,0.6849,4.212,0.4661,0.6432,"max_depth=4, ccp_alpha=0.0"
+SVM (RBF),Pointwise Classification (v5.0),Static Threshold (tau=0.863),0.5672,0.6973,0.8035,0.6309,0.5327,0.6527,0.6901,0.6709,N/A,N/A,N/A,"C=100.0, gamma=0.001"
+SVM (RBF),Pointwise Classification (v5.0),Post-hoc Top-3 Selection,0.5672,0.6973,0.8035,0.6309,0.5327,0.6562,0.6562,0.6562,4.7508,0.3208,0.4975,"C=100.0, gamma=0.001"
+Dual-Branch 1D-CNN,Pointwise Classification (v5.0),Static Threshold (tau=0.803),0.6706,0.7347,0.8374,0.7272,0.5333,0.6478,0.7135,0.6791,N/A,N/A,N/A,"epoch=3, seq+static fusion"
+Dual-Branch 1D-CNN,Pointwise Classification (v5.0),Post-hoc Top-3 Selection,0.6706,0.7347,0.8374,0.7272,0.5333,0.6615,0.6615,0.6615,4.762,0.3175,0.4921,"epoch=3, seq+static fusion"
+LambdaMART (linear_rank),Listwise Learning-to-Rank (v6.0),Top-3 Guaranteed Selection,0.8063,0.7731,0.8618,0.7875,0.5172,0.6771,0.6771,0.6771,4.2449,0.4577,0.6309,"target=linear_rank, best_iter=1, lr=0.05"
+LambdaMART (f1_points),Listwise Learning-to-Rank (v6.0),Top-3 Guaranteed Selection,0.8353,0.7666,0.8449,0.7901,0.382,0.6432,0.6432,0.6432,4.8408,0.2948,0.3652,"target=f1_points, best_iter=1, lr=0.05"
+Plackett-Luce Neural Ranker,Listwise Learning-to-Rank (v6.0),Top-3 Guaranteed Selection,0.6955,0.76,0.8446,0.7453,0.5379,0.6823,0.6823,0.6823,4.7487,0.3213,0.4928,"ListMLE loss, MLP(17->64->32->1), epochs=50, lr=1e-3"
+Two-Stage Hurdle,Two-Stage Hurdle (v6.0),Top-3 Guaranteed Selection,0.6486,0.7417,0.8305,0.7203,0.5106,0.6693,0.6693,0.6693,4.342,0.4326,0.6587,"Stage1: HistGBM (calibrated), Stage2: HistGBM Pace (R^2=0.6587)"
+Two-Stage Hurdle (Expected Pos),Two-Stage Hurdle (v6.0),Top-3 Guaranteed (Expected Pos),0.6116,0.7256,0.8229,0.6844,0.5306,0.6745,0.6745,0.6745,4.342,0.4326,0.6587,"E[Pos] = (1-p)*y_finish + p*18.04, Stage 2 R^2=0.6587"
